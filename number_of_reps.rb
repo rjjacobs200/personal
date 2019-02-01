@@ -1,4 +1,3 @@
-total_num_reps = 680
 
 class State
     def initialize name:, population: 0, num_reps: 1
