@@ -1,14 +1,14 @@
 
-BENCHMARKING_INDEX = ARGV[0].to_i
+BENCHMARKING_INDEX = 40
 
 require 'benchmark'
 
-def inefficient_fibonacci n
-  case n
+def inefficient_fibonacci index
+  case index
   when 0, 1
-    n
+    index
   else
-    (inefficient_fibonacci n - 1) + (inefficient_fibonacci n - 2)
+    (inefficient_fibonacci index - 1) + (inefficient_fibonacci index - 2)
   end
 end
 
