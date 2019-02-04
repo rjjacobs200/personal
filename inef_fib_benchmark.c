@@ -10,10 +10,10 @@ unsigned long inefficient_fibonacci(unsigned int index) {
 }
 
 int main() {
-  //printf("Beginning benchmark...");
-  //time_t start_time = time(NULL);
+  printf("Beginning benchmark...");
+  time_t start_time = time(NULL);
   unsigned long calculated_value = inefficient_fibonacci(BENCHMARKING_INDEX);
-  //printf("fib(%i) = %lu (%f seconds elapsed)\n",
-    //BENCHMARKING_INDEX, calculated_value, difftime(time(NULL), start_time));
+  printf("fib(%i) = %lu (%f seconds elapsed)\n",
+    BENCHMARKING_INDEX, calculated_value, difftime(time(NULL), start_time));
   return 0;
 }

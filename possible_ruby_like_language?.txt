@@ -1,0 +1,14 @@
+def func(param1 -> ClassName, param2 |> func_name)
+  # implementation...
+end
+# is syntactic sugar for...
+def func(param1, param2)
+  if !(param1.coersable_to? ClassName)
+    raise ArgumentError, "param1 must be coersable into ClassName"
+  end
+  if !(param2.responds_to? :func_name)
+    raise ArgumentError, "param2 must respond to function func_name"
+  end
+  param1.coerse_to! ClassName
+  # implementation...
+end
