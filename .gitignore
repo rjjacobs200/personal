@@ -53,6 +53,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-#Rust things
-/target
-**/*.rs.bk
+# Rust things
+# */target
+# **/*.rs.bk
