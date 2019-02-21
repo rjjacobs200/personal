@@ -1,7 +1,0 @@
-[package]
-name = "learning_rust"
-version = "0.1.0"
-authors = ["RJ Jacobs <rjjacobs200@gmail.com>"]
-
-[dependencies]
-rand = "0.4.6"
