@@ -18,9 +18,9 @@ impl<T> SLStack<T> {
   }
   fn pop(&self) -> T {
     if root.is_null() {return ptr::null();}
-    temp: T = root.data;
-    root = root.next;
-    temp
+    self.temp: T = self.root.data;
+    self.root = self.root.next;
+    self.temp
   }
 }
 
