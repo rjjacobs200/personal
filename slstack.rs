@@ -1,4 +1,3 @@
-use std::ptr;
 
 struct SLStack<T> {
   root: SLNode<T>,
@@ -11,13 +10,13 @@ struct SLNode<T> {
 
 impl<T> SLStack<T> {
   fn new() -> Self {
-    Self{ptr::null()}
+    Self{None,}
   }
   fn push(&self, el: T) {
 
   }
   fn pop(&self) -> T {
-    if self.root.is_null() {return ptr::null();}
+    if self.root == None {return None;}
     let temp: T = self.root.data;
     self.root = self.root.next;
     self.temp
