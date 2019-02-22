@@ -15,6 +15,6 @@ impl<T> SLStack<T> {
   fn pop(&self) -> T {
     if self.root == None {panic!("Fool! You tried to pop off an empty stack!");}
     let temp: T = self.root.data;
-    root:
+    self.root = self.root.next;
   }
 }
