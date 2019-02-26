@@ -1,30 +1,52 @@
-class BinaryeTree
-  class Node
-    attr_accessor :data, :left, :right
-    def initialize data, left = nil, right = nil
-      @data, @left, @right = data, left, right
-    end
-  end
-  def initialize
-    @root = nil
-  end
-  def each func = lambda {|i| yield i}, node = root
-    if node.left  then each func, node.left  end
-    if node.right then each func, node.right end
+
+def test
+  tree = BinarySearchTree.new
+  for i in 0..100
+    tree.add Random.rand 10000
   end
 end
 
-class BinarySearchTree < BinaryeTree
-  def add element, node = root
-    case element <=> node.data
-    when 0
-      return false
-    when -1
-      if !node.left  then node.left = node.new element
-      else add element, node.left end
-    when 1
-      if !node.right then node.right = node.new element
-      else add element, node.right end
+class BinaryTree
+  private
+  class Node
+    def initialize data, left = nil, right = nil
+      @data, @left, @right = data, left, right
+    end
+    def each
+      if left  then left.each  {|i| yield i} end
+      yield @data
+      if right then right.each {|i| yield i} end
     end
   end
+  public
+  def initialize
+    @root = nil
+  end
+  def each
+    @root.each {|i| yield i}
+  end
+
 end
+
+class BinarySearchTree < BinaryTree
+  class Node
+    def add element
+      case element <=> @data
+      when 0
+        return false
+      when -1
+        if !@left  then @left =  Node.new element
+        else @left.add element  end
+      when 1
+        if !@right then @right = Node.new element
+        else @right.add element end
+      end
+    end
+  end
+  def add element, node = @root
+    if !@root then @root = Node.new element
+    else @root.add
+  end
+end
+
+test
