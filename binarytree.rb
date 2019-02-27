@@ -4,21 +4,21 @@ def test
   for i in 0..100
     tree.add Random.rand 10000
   end
+  tree.each {|i| puts i}
 end
 
 class BinaryTree
-  private
   class Node
     def initialize data, left = nil, right = nil
       @data, @left, @right = data, left, right
     end
     def each
-      if left  then left.each  {|i| yield i} end
+      if @left  then @left.each  {|i| yield i} end
       yield @data
-      if right then right.each {|i| yield i} end
+      if @right then @right.each {|i| yield i} end
     end
   end
-  public
+  private_constant :Node
   def initialize
     @root = nil
   end
@@ -29,7 +29,7 @@ class BinaryTree
 end
 
 class BinarySearchTree < BinaryTree
-  class Node
+  class Node < BinaryTree::Node
     def add element
       case element <=> @data
       when 0
@@ -45,7 +45,7 @@ class BinarySearchTree < BinaryTree
   end
   def add element, node = @root
     if !@root then @root = Node.new element
-    else @root.add
+    else @root.add element end
   end
 end
 
