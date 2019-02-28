@@ -1,14 +1,25 @@
-
-def test
-  tree = BinarySearchTree.new
-  for i in 0..100
-    tree.add Random.rand 10000
+class Tree
+  class Node
+    def initialize data, *children
+      @data, @children = data, children
+    end
+    def each
+      if @left  then @left.each  {|i| yield i} end
+      yield @data
+      if @right then @right.each {|i| yield i} end
+    end
   end
-  tree.each {|i| puts i}
+  def initialize
+    @root = nil
+  end
+  def each
+    @root.each {|i| yield i}
+  end
+  alias iterate each
 end
 
 class BinaryTree
-  class Node
+  class Node < Tree::Node
     def initialize data, left = nil, right = nil
       @data, @left, @right = data, left, right
     end
@@ -18,14 +29,6 @@ class BinaryTree
       if @right then @right.each {|i| yield i} end
     end
   end
-  private_constant :Node
-  def initialize
-    @root = nil
-  end
-  def each
-    @root.each {|i| yield i}
-  end
-
 end
 
 class BinarySearchTree < BinaryTree
@@ -48,5 +51,3 @@ class BinarySearchTree < BinaryTree
     else @root.add element end
   end
 end
-
-test
