@@ -13,6 +13,7 @@ class BinaryTree
   class Node < Tree::Node
     def initialize data, left = nil, right = nil
       @data, @left, @right = data, left, right
+      data
     end
     def each
       if @left  then @left.each  {|i| yield i} end
@@ -20,12 +21,15 @@ class BinaryTree
       if @right then @right.each {|i| yield i} end
     end
     def height
-      [if @left  then @left.height  else 0 end,
-       if @right then @right.height else 0 end].max
+      [if @left  then @left.height  + 1 else 0 end,
+       if @right then @right.height + 1 else 0 end].max
     end
     def balance_factor
       @right.height - @left.height
     end
+  end
+  def initialize
+    @root, @size = nil, 0
   end
   def each
     @root.each {|i| yield i}
@@ -34,9 +38,6 @@ class BinaryTree
   def height
     @root.height
   end
-  def root_balance_factor
-    @root.balance_factor
-  end
 end
 
 class BinarySearchTree < BinaryTree
@@ -44,18 +45,21 @@ class BinarySearchTree < BinaryTree
     def add element
       case element <=> @data
       when 0
-        return false
+        nil
       when -1
         if !@left  then @left =  Node.new element
         else @left.add element  end
+        element
       when 1
         if !@right then @right = Node.new element
         else @right.add element end
+        element
       end
     end
   end
   def add element, node = @root
-    if !@root then @root = Node.new element
+    @size += 1
+    if !@root then @root = Node.new element; element
     else @root.add element end
   end
 end
