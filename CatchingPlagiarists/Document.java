@@ -24,7 +24,7 @@ class Document {
         numPhrasesInCommon++;
 
     return numPhrasesInCommon / chunks.size();
-    
+
   }
 
 }
