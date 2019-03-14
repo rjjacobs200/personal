@@ -28,8 +28,9 @@ class BinaryTree
       @right.height - @left.height
     end
   end
-  def initialize
+  def initialize collection
     @root, @size = nil, 0
+    collection.each {|e| add e}
   end
   def each
     @root.each {|i| yield i}
@@ -57,9 +58,20 @@ class BinarySearchTree < BinaryTree
       end
     end
   end
-  def add element, node = @root
+  def add element
     @size += 1
-    if !@root then @root = Node.new element; element
-    else @root.add element end
+    if !@root
+      @root = Node.new element
+      element
+    else
+      @root.add element
+    end
+  end
+end
+
+class BalancingTree < BinarySearchTree
+  def initialize
+    super
+    puts "I did a thing"
   end
 end
