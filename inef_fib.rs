@@ -1,5 +1,5 @@
 
-const BENCHMARKING_INDEX: u64 = 40;
+const BENCHMARKING_INDEX: u64 = 45;
 
 use std::io;
 

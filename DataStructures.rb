@@ -28,7 +28,7 @@ class BinaryTree
       @right.height - @left.height
     end
   end
-  def initialize collection
+  def initialize collection = []
     @root, @size = nil, 0
     collection.each {|e| add e}
   end
