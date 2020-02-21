@@ -25,7 +25,7 @@ class MyQtApp < Qt::Widget
     def init_ui
         quit_btn = Qt::PushButton.new "Quit", self
         quit_btn.resize 80, 30
-        quit_btn.move 50,50
+        quit_btn.move WIDTH - 90, HEIGHT - 40
         connect quit_btn, SIGNAL('clicked()'), $qApp, SLOT('quit()')
     end
         
