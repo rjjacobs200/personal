@@ -32,7 +32,7 @@ class MyQtApp < Qt::Widget
     def init_ok_btn
         ok_btn = Qt::PushButton.new "OK", self
         ok_btn.resize 80, 30
-        o.move WIDTH - 180, HEIGHT - 40
+        ok_btn.move WIDTH - 180, HEIGHT - 40
     end
     
     def init_ui
