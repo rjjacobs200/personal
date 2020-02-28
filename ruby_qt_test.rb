@@ -15,15 +15,14 @@ class QtApp < Qt::Widget
     def init_ui
         vbox = Qt::VBoxLayout.new self
         hbox = Qt::HBoxLayout.new
-
-        ok = Qt::PushButton.new "OK", self
-        apply = Qt::PushButton.new "Apply", self
-
-        hbox.addWidget ok, 1, Qt::AlignRight
-        hbox.addWidget apply
-
         vbox.addStretch 1
         vbox.addLayout hbox
+
+        ok_btn    = Qt::PushButton.new "OK",    self
+        apply_btn = Qt::PushButton.new "Apply", self
+
+        hbox.addWidget ok_btn, 1, Qt::AlignRight
+        hbox.addWidget apply_btn
     end
     
 end
