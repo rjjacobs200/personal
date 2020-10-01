@@ -25,6 +25,6 @@ update do
 
 	@square.x = (@square.x + 25) % (Window.width  + 25) - 25
 	@square.y = (@square.y + 25) % (Window.height + 25) - 25
-	end
+end
 
 show
