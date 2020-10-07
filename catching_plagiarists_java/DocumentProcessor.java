@@ -1,6 +1,14 @@
 
 import Scanner;
 
+ /**
+  * A handy little cluster of (static) functions designed to make it easier to
+  * process documents we want to scan in, without having to bog down our other
+  * classes with a bunch of implementation junk. I'm probably not going to use
+  * all of these, but its always nice to have a couple different ways of doing 
+  * the same thing in case I want to, or someone else wants to, rewrite the 
+  * program, or use this as a library for some other kind of project later
+  */
 class DocumentProcessor {
 
   static <T extends Set> T<String> getChunks(List<String> words, int chunkLen) {
